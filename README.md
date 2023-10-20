@@ -5,9 +5,9 @@
 # Project Name
 Long Description about project. This project do that. This project is awesome...
 ## Team members
-1. Muhammed Shiyas(https://github.com/Shiyas-N)
-2. Nasha(https://github.com/Nashap)
-3. Nidal Mohammed(https://github.com/Nidalmh)
+1. [Muhammed Shiyas](https://github.com/Shiyas-N)
+2. [Nasha](https://github.com/Nashap)
+3. [Nidal Mohammed](https://github.com/Nidalmh)
 ## Link to product walkthrough
 [link to video](Link Here)
 ## How it Works ?
