@@ -3,11 +3,11 @@ import json
 
 
 def main(page: ft.Page):
-   
+    
     page.title = "The Game"
     page.window_width = 300
     page.window_height = 360
-    page.window_frameless = False
+    page.window_frameless = True
     page.window_center()
 
     player_red = []
@@ -26,25 +26,29 @@ def main(page: ft.Page):
                       [15, 21, 27],
                       [17, 23, 29]]
 
+    
     diagonal_lines = [[13, 21, 29],
                       [17, 21, 25]]
 
+    
     lines = horizontal_lines + vertical_lines + diagonal_lines
 
     def close(e):
         page.window_close()
 
     def win(player):
-        
-       
+        """
+        The win 
+        """
+        # se
         c = "blue" if player == "Blue" else "red"
-        page.window_frameless =  True
+        page.window_frameless = False
         page.clean()
         page.add(
             ft.Column(
                 [
                     ft.Container(
-                        ft.Text(f"Player {player} won!", size=30,
+                        ft.Text(f"Player {player} won!", size=25,
                                 color=c), alignment=ft.alignment.center),
                     ft.Container(
                         ft.IconButton(
@@ -78,13 +82,13 @@ def main(page: ft.Page):
             fields_left.remove(field)
 
         for line in lines:
-           
+            
             if all(num in player_red for num in line):
-                win("Red")
+                win("red")
 
            
             if all(num in player_blue for num in line):
-                win("Blue")
+                win("blue")
 
     page.add(
         ft.Row(
@@ -94,12 +98,14 @@ def main(page: ft.Page):
 
 
                         ft.Draggable(
-                            group="icon",
+                            group="number",
                             content=ft.Container(
-                                ft.IconButton(
-                         icon=ft.icons.CLOSE,  icon_size=50,
+                                width=50,
+                                height=50,
+                                bgcolor=ft.colors.BLUE,
+                                content=ft.ElevatedButton('x'),
+                                border_radius=5,
                             ),
-                            )
                         ),
                         ft.Container(
                             ft.IconButton(
@@ -108,12 +114,16 @@ def main(page: ft.Page):
                             ), margin=ft.margin.only(left=60)),
 
                         ft.Draggable(
-                            group="icon",
+                            group="number",
                             content=ft.Container(
-                                 ft.IconButton(
-                         icon=ft.icons.CIRCLE,  icon_size=50,
+                                margin=ft.margin.only(left=60),
+                                width=50,
+                                height=50,
+                                bgcolor=ft.colors.RED,
+                                content=ft.ElevatedButton ("0"),
+                                
+                                border_radius=5,
                             ),
-                            )
                         ),
 
                     ]
@@ -126,7 +136,7 @@ def main(page: ft.Page):
 
     grid = ft.GridView(
         expand=1,
-        runs_count=5,
+        runs_count=3,
         max_extent=100,
         child_aspect_ratio=1.0,
         spacing=5,
@@ -138,10 +148,10 @@ def main(page: ft.Page):
     for _ in range(0, 9):
         grid.controls.append(
             ft.DragTarget(
-                group="color",
+                group="number",
                 content=ft.Container(
-                    width=100,
-                    height=100,
+                    width=50,
+                    height=50,
                     bgcolor=ft.colors.BLUE_GREY_100,
                     border_radius=5,
                 ),
